@@ -30,7 +30,7 @@ document.getElementById('up').onchange = function(e) {
         contentType: false,
         processData: false,
         success : function(data) {    
-               
+            $("#sendimg").attr("src", "http://localhost:8080/getImg/1?\"+Math.random());")
         },    
         error : function(data) {    
               

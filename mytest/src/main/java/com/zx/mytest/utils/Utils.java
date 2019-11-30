@@ -37,17 +37,19 @@ public class Utils {
 
     public void sendImg(HttpServletRequest request, HttpServletResponse response, String flag) {
 
-        String filePath = "E://resources//pic//";
+//        String filePath = "E://resources//pic//";
+        String filePath = "D://upload//";
         response.setHeader("Pragma", "no-cache");
         response.setHeader("Cache-Control", "no-cache");
         response.setDateHeader("Expires", 0);
         response.setContentType("image/png");
         File file;
-        if (flag.equals("one")) {
-            file = new File(filePath+"2.png");
-        } else {
-            file = new File(filePath+"3.png");
-        }
+//        if (flag.equals("one")) {
+//            file = new File(filePath+"2.png");
+//        } else {
+//            file = new File(filePath+"3.png");
+//        }
+        file = new File(filePath+flag+".png");
        // System.out.println(file.getAbsoluteFile());
         InputStream is;
         try {

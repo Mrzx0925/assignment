@@ -13,8 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 
     @Service("UpFile")
     public class UpFile  {
-
-
         public String upload(List<MultipartFile> files) {
              String Storage_PATH = "D:\\upload\\";
             int i = 1;
