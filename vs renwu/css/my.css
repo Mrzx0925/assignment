@@ -49,9 +49,13 @@ body {
 }
 /* 艺术字 */
 .font > p{
-    font-size: 20px;
+    /* font-size: 30px; */
+    font-size: x-large;
     text-shadow: 0 0 2px black; 
     color: white;
+}
+.font >p1{
+    font-size: large;
 }
 
 
