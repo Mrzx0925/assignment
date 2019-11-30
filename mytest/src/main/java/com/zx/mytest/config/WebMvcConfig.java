@@ -1,9 +1,14 @@
 package com.zx.mytest.config;
 
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.unit.DataSize;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import javax.servlet.MultipartConfigElement;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
@@ -28,4 +33,17 @@ public class WebMvcConfig implements WebMvcConfigurer {
         //第一个方法设置访问路径前缀，第二个方法设置资源路径
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
     }
+
+    @Bean
+    public MultipartConfigElement multipartConfigElement() {
+
+
+        MultipartConfigFactory factory = new MultipartConfigFactory();
+        //单个文件最大
+        factory.setMaxFileSize(DataSize.parse("10MB"));
+        /// 设置总上传数据总大小
+        factory.setMaxRequestSize(DataSize.parse("102400KB"));
+        return factory.createMultipartConfig();
+    }
+
 }

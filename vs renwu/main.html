@@ -16,7 +16,11 @@
 </head>
 
 <body>
-        <input id = "zx" type="file" webkitdirectory />
+
+<form id="fileup" action=""  method="post" enctype="multipart/form-data">
+    <input id = "up" type="file" name="fileFolder" style="display: none;" webkitdirectory />
+</form>
+   
     <div class="firstleft">
     </div>
     <div class="mydiv">
@@ -31,7 +35,7 @@
             </div>
             <div class="con1">
                 <button class="bu" style="height: 13%;">综合</button>
-                <button class="bu" style="height: 13%;">逆风区</button>
+                <button class="bu" style="height: 13%;" onclick="nifen()">逆风区</button>
                 <button class="bu" style="height: 13%;">降雨</button>
                 <button class="bu" style="height: 13%;">雷暴/大风/冰雹</button>
                 <button class="bu" style="height: 13%;">强反射率dBz</button>

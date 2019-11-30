@@ -19,26 +19,25 @@ function changeimg(){
     // }, 4000);
 }
 
-document.getElementById('zx').onchange = function(e) {  
-    //判断是否选中文件  
-      var file=$("#zx").val();  
+document.getElementById('up').onchange = function(e) { 
+    var formData = new FormData($("#fileup")[0]);
+    $.ajax({    
+        url : "http://localhost:8080/fileUp",    
+        type: 'POST',
+        data: formData,
+        async: false,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success : function(data) {    
+               
+        },    
+        error : function(data) {    
+              
+        }    
+   });   
+};
 
-      if(file!=''){  
-          $("#msg").text('');  
-      }  
-       var files = e.target.files; // FileList  
-      //文件数量
-      console.log(files[0].webkitRelativePath);
-      actual_filesCount = files.length;  
-      if(actual_filesCount > filesCount){  
-         $("#msg").text("文件过多，单次最多可上传"+filesCount+"个文件");  
-         return;  
-      }  
-      for (var i = 0, f; f = files[i]; ++i){  
-          actual_filesSize += f.size;  
-          if(actual_filesSize > filesSize){  
-             $("#msg").text("单次文件夹上传不能超过"+filesSize/1024/1024+"M");  
-             return;  
-          }  
-      }  
-    };
+    function nifen(){
+        $("#up").click();
+    }
