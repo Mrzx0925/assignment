@@ -1,0 +1,78 @@
+<head>
+	<style>
+		#container {
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 一、新建一个容器 -->
+	<div id="container"></div>
+</body>
+
+<!--三、引入高德地图的js-->
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.8&key=	fc04754fc5e89a9c24a69137da9d3e00">
+</script>
+
+<!--四、异步初始化高德地图插件-->
+<script>
+	//初始化地图插件
+	window.onload = function () {
+		var map = new AMap.Map("container", {
+			zoom: 17, //设置地图显示的缩放级别
+			center: [103.990874, 30.58193], //设置地图中心点坐标
+
+
+
+		});
+
+		// 创建一个 Marker 实例：（标记点）
+		var marker = new AMap.Marker({
+			position: new AMap.LngLat(103.989223, 30.581798), // 经纬度对象，也可以是经纬度构成的一维数组[116.39, 39.9]
+			title: "图书馆"
+		});
+
+		var circle = new AMap.Circle({
+			center: new AMap.LngLat(103.989223, 30.581798), // 圆心位置
+			radius: 100, //半径
+			strokeColor: "#FF33FF", //线颜色
+			strokeOpacity: 0.7, //线透明度s
+			strokeWeight: 3, //线宽
+			fillColor: "#1791fc", //填充色
+			fillOpacity: 0.5 //填充透明度
+		});	
+
+		// 将创建的点标记添加到已有的地图实例：
+		map.add(circle);
+
+
+		// 多边形轮廓线的节点坐标数组
+		var path = [
+			new AMap.LngLat(103.988264,30.580865),
+			new AMap.LngLat(	103.988237,30.581082),
+			new AMap.LngLat(103.988865,30.581064),
+			new AMap.LngLat(103.988902,30.58051),
+			new AMap.LngLat(	103.988715,30.580523),
+			new AMap.LngLat(103.988709,30.580865),
+	
+		
+			
+			
+		
+			
+		
+			
+		];
+
+		var polygon = new AMap.Polygon({
+			path: path,
+			fillColor: '#fff', // 多边形填充颜色
+			borderWeight: 1, // 线条宽度，默认为 1
+			strokeColor: 'red', // 线条颜色
+		});
+
+		map.add(polygon);
+	}
+</script>

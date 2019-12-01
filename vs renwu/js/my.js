@@ -3,6 +3,7 @@ var relength = "";
 var down_flag = 1;
 var up_flag = 1;
 function upchangeimg(){
+    judgeIsUp();
     for(let i=1; i<=relength; i++){
         setTimeout(() => {
             $("#upimg").attr("src", "http://localhost:8080/getUpImg/"+i+"?"+Math.random());
@@ -14,6 +15,7 @@ function upchangeimg(){
     
 }
 function downchangeimg(){
+    judgeIsUp();
     for(let i=1; i<=relength; i++){
         setTimeout(() => {
             $("#downimg").attr("src", "http://localhost:8080/getDownImg/"+i+"?"+Math.random());
@@ -39,15 +41,15 @@ document.getElementById('up').onchange = function(e) {
         contentType: false,
         processData: false,
         success : function(data) {    
-          alert(data);
            $("#upimg").attr("src", "http://localhost:8080/getUpImg/1?\"+Math.random());");
            $("#downimg").attr("src", "http://localhost:8080/getDownImg/1?\"+Math.random());");
         },    
-        error : function(data) {    
-              
+        error : function(data) {   
+            alert("上传失败"); 
+              relength = 0;
         }    
    });
-alert();
+
     document.getElementById('up').value="";
 };
 
@@ -58,6 +60,7 @@ function nifen(){
 
 
 function re(){
+    judgeIsUp();
     if(down_flag >1){
         down_flag = down_flag-1;
         $("#downimg").attr("src", "http://localhost:8080/getDownImg/"+down_flag+"?"+Math.random());
@@ -65,7 +68,7 @@ function re(){
     }
 }
 function next(){
-    
+    judgeIsUp();
     if(down_flag < relength){
         down_flag = down_flag+1;
         $("#downimg").attr("src", "http://localhost:8080/getDownImg/"+down_flag+"?"+Math.random());
@@ -74,6 +77,7 @@ function next(){
 }
 
 function sre(){
+    judgeIsUp();
     if(up_flag >1){
         up_flag = up_flag-1;
         $("#upimg").attr("src", "http://localhost:8080/getUpImg/"+up_flag+"?"+Math.random());
@@ -81,10 +85,16 @@ function sre(){
     }
 }
 function snext(){
-    
+    judgeIsUp();
     if(up_flag < relength){
         up_flag = up_flag+1;
         $("#upimg").attr("src", "http://localhost:8080/getUpImg/"+up_flag+"?"+Math.random());
         
+    }
+}
+
+function judgeIsUp(){
+    if(relength == 0){
+        alert("未上传,请点击左边内容上传");
     }
 }
