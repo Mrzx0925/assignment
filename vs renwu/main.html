@@ -50,23 +50,25 @@
                 <button class="bu">龙卷</button>
             </div>
             <div>
-                <button class="bu" id="re">上一张</button>
-                <button class="bu">下一张</button>
-            </div>
+                <button class="bu"  id="re" onclick="re()">上一张</button>
+                <button class="bu" onclick="next()">下一张</button>
+            </div> 
 
 
-        </div>
+        </div> 
         <!-- 中间 -->
         <div class="content">
-            <img id="" class="img" title="点击自动播放图片"
-                src="https://goss.veer.com/creative/vcg/veer/612/veer-101125166.jpg">
-            <img id="sendimg" class="img2" title="点击自动播放图片"
-                src="images/1/1.jpg" onclick="changeimg()">
+            <img id="downimg" class="img" title="点击自动播放图片"
+                src="images/1.png" onclick="downchangeimg()">
+                
+            <img id="upimg" class="img2" title="点击自动播放图片"
+                src="images/1.png" onclick="upchangeimg()">
+                <button class="sbu" style="float: left;" onclick="sre()">上一张</button>
+                <button class="sbu" style="float: right;" onclick="snext()">下一张</button>
             <img id="" class="info" src="images/info.jpg">
         </div>
     </div>
-    <div class="firstbottom">
-
+    <div class="firstbottom">   
     </div>
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <!-- <script src="layui/layui.all.js"></script>

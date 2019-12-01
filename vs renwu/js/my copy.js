@@ -121,7 +121,7 @@ function upload() {
        formData.append("file", $('#file')[0].files[0]); //添加图片信息的参数
        //setTimeout("up();",500);
        setTimeout("up();",10);
-       //up();
+       //up();  
     }
 }
 function up(){

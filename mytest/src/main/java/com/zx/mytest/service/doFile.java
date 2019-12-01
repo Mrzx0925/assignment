@@ -2,23 +2,21 @@ package com.zx.mytest.service;
 
 
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-    @Service("UpFile")
-    public class UpFile  {
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@Service("UpFile")
+    public class doFile {
         public String upload(List<MultipartFile> files) {
              String Storage_PATH = "D:\\upload\\";
             int i = 1;
-
-
-
             BufferedOutputStream bos = null;
             BufferedInputStream bis = null;
             try {
@@ -55,7 +53,6 @@ import org.springframework.web.multipart.MultipartFile;
                         bos.close();
                     }
                 }
-
                 return "ok";
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -65,4 +62,49 @@ import org.springframework.web.multipart.MultipartFile;
                 return "error";
             }
         }
+
+
+    public void sendImg(HttpServletRequest request, HttpServletResponse response, String flag,String filePath) {
+        response.setHeader("Pragma", "no-cache");
+        response.setHeader("Cache-Control", "no-cache");
+        response.setDateHeader("Expires", 0);
+        response.setContentType("image/JPG");
+        java.io.File file;
+        file = new java.io.File(filePath+flag+".JPG");
+        // System.out.println(file.getAbsoluteFile());
+        InputStream is;
+        try {
+            is = new FileInputStream(file);
+            BufferedImage bi = ImageIO.read(is);
+            ImageIO.write(bi, "JPEG", response.getOutputStream());
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public void runpy(String filepath) {
+       // String run = "python  -W ignore  E://resources//py//file.py  "+filepath;
+        String run="xcopy D:\\upload D:\\download\\  /y /s /f /h";
+        Process proc;
+        try {
+            proc = Runtime.getRuntime().exec(run);
+            proc.waitFor(); //等待执行完成x
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } // 执行py文件
+        catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+
 }
