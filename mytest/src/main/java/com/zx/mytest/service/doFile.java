@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @Service("UpFile")
     public class doFile {
-        public String upload(List<MultipartFile> files) {
-             String Storage_PATH = "D:\\upload\\";
+        public String upload(List<MultipartFile> files,String path) {
+             String Storage_PATH = "D:\\myAs\\upload\\"+path+"\\";
             int i = 1;
             BufferedOutputStream bos = null;
             BufferedInputStream bis = null;
@@ -90,7 +90,8 @@ import javax.servlet.http.HttpServletResponse;
 
     public void runpy(String filepath) {
        // String run = "python  -W ignore  E://resources//py//file.py  "+filepath;
-        String run="xcopy D:\\upload D:\\download\\  /y /s /f /h";
+        String run="xcopy D:\\myAs\\wait\\"+filepath+" D:\\myAs\\download\\"+filepath+"\\  /y /s /f /h";
+        System.out.println(run);
         Process proc;
         try {
             proc = Runtime.getRuntime().exec(run);
@@ -107,4 +108,14 @@ import javax.servlet.http.HttpServletResponse;
     }
 
 
+    public long judgeExist(String path) {
+            File file = new File("D://myAS//upload//"+path+"//1.jpg");
+            if(!file.exists()){
+                return 0;
+            }
+            else{
+                file = new File("D://myAs//upload//"+path);
+            }
+            return file.listFiles().length;
+    }
 }

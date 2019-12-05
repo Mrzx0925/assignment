@@ -24,24 +24,28 @@ public class Main {
     doFile dofile;
 
 
-    @RequestMapping(value = "/getUpImg/{flag}")
-    public void getUpImg(@PathVariable String flag,HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String filePath = "D://upload//";
+    @RequestMapping(value = "/getUpImg/{path}/{flag}")
+    public void getUpImg(@PathVariable String flag,@PathVariable String path,HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String filePath = "D://myAs//upload//"+path+"//";
         dofile.sendImg(request, response,flag,filePath);
     }
-    @RequestMapping(value = "/getDownImg/{flag}")
-    public void getDownImg(@PathVariable String flag,HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String filePath = "D://download//";
+    @RequestMapping(value = "/getDownImg/{path}/{flag}")
+    public void getDownImg(@PathVariable String flag,@PathVariable String path,HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String filePath = "D://myAs//download//"+path+"//";
         dofile.sendImg(request, response,flag,filePath);
     }
 
-    @RequestMapping(value="/fileUp",method= RequestMethod.POST)
-    public String uploadFileFolder(HttpServletRequest request) {
+    @RequestMapping(value="/fileUp/{path}",method= RequestMethod.POST)
+    public String uploadFileFolder(@PathVariable String path,HttpServletRequest request) {
         MultipartHttpServletRequest params=((MultipartHttpServletRequest) request);
         List<MultipartFile> files = params.getFiles("fileFolder");
-        String result = dofile.upload(files);
-        dofile.runpy("1");
+        String result = dofile.upload(files,path);
+        dofile.runpy(path);
         return result;
+    }
+    @RequestMapping(value = "/judge/{path}")
+    public long  judgeExist(@PathVariable String path){
+        return  dofile.judgeExist(path);
     }
 
 }

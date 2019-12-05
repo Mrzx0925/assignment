@@ -1,5 +1,5 @@
 var flag = 0;
-var formData = new FormData();
+    var formData = new FormData();
 function one() {
     flag=0;
     $("#getimg").attr("src", " https://goss.veer.com/creative/vcg/veer/612/veer-101125166.jpg");

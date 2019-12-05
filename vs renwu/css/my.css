@@ -57,6 +57,25 @@ body {
 	background: rgb(100, 100, 100);
 }
 
+.openbu { /* 按钮美化 */
+    border: 1px solid rgb(107, 106, 151);
+    margin-left: 3%;
+    margin-right: 3%;
+	width: 30%; /* 宽度 */
+	height: 30%; /* 高度 */
+	border-width: 1px; /* 边框宽度 */
+	border-radius: 1px; /* 边框半径 */
+	/* background: #1E90FF; 背景颜色 */
+	cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+	outline:none; /* 不显示轮廓线 */
+	font-family: Microsoft YaHei; /* 设置字体 */
+	color: rgb(36, 23, 23); /* 字体颜色 */
+    font-size: 10%; /* 字体大小 */
+}
+.openbu:hover { /* 鼠标移入按钮范围时改变颜色 */
+	background: rgb(100, 100, 100);
+}
+
 .firstbottom{
     margin-top: 1%;
     height: 3.7%;
